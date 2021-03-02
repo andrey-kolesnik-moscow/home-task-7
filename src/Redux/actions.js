@@ -1,33 +1,27 @@
-import { applyMiddleware, createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import reducer from '../Redux/reducer';
 import axios from 'axios';
 
-export const store = createStore(reducer, applyMiddleware(thunkMiddleware));
+const composeEnhancers =
+  typeof window === 'object' &&
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?   
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
 
-export const changeFirstName = (name) => ({
-            type: 'CHANGE_FIRST_NAME',
-            payload: name,
-        })
+const enhancer = composeEnhancers(
+  applyMiddleware(thunkMiddleware),
+);
+export const store = createStore(reducer, enhancer);
 
-export const changeLastName = (lastName) => ({
-            type: 'CHANGE_LASTNAME',
-            payload: lastName,
-        })
+// export const store = createStore(
+//     reducer, 
+//     // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+//     applyMiddleware(thunkMiddleware),
+//     );
 
-export const changeCountry = (country) => ({
-            type: 'CHANGE_COUNTRY',
-            payload: country,
-        })
-
-export const changeCity = (city) => ({
-            type: 'CHANGE_CITY',
-            payload: city,
-        })
-
-export const changePhone = (phone) => ({
-            type: 'CHANGE_PHONENUM',
-            payload: phone,
+export const changePersonalData = (data) => ({
+            type: 'CHANGE_PERSONAL_DATA',
+            payload: data,
         })
 
 export const changeDeliveryMethod = (method) => ({
@@ -48,11 +42,6 @@ export const changeActiveStep = (value) =>  {
           };
     } 
 }
-
-export const changeFirstStepAvailability = (value) => ({
-        type: 'CHANGE_FIRST_STEP_AVAILABILITY',
-        payload: value,
-        })
 
 export const thunkCreator = (payer) => {
     return (dispatch) => {

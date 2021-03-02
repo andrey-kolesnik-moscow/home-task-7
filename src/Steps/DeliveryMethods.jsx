@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { changeDeliveryMethod } from '../Redux/actions';
 
 export default function DeliveryMethods() {
-  const deliveryMethod = useSelector(({ deliveryMethod }) => deliveryMethod);
+  const deliveryMethod = useSelector((store) => store.payer.deliveryMethod);
   const dispatch = useDispatch();
 
   const deliverers = [

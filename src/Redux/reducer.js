@@ -10,7 +10,7 @@ const initialState = {
     },
     activeStep: 0,
     stepsAvailable: {
-        1: false,
+        1: true,
         2: false,
         3: false,
         4: true,
@@ -20,39 +20,17 @@ const initialState = {
  function reducer(state = initialState, action) {
 
     switch (action.type) {
-      case 'CHANGE_FIRST_NAME':
-        return { ...state,
-            payer: {...state.payer,
-                firstName: action.payload
-            } 
-           
-        };
-        case 'CHANGE_LASTNAME':
-            return { ...state,
-                payer: {...state.payer,
-                    lastName: action.payload
-                } 
-            }
-        case 'CHANGE_COUNTRY':
-            return { ...state,
-                payer: {...state.payer,
-                    country: action.payload
-                } 
-            }
-            
-        case 'CHANGE_CITY':
-            return { ...state,
-                payer: {...state.payer,
-                    city: action.payload
-                } 
-            } 
-            
-        case 'CHANGE_PHONENUM':
-            return { ...state,
-                payer: {...state.payer,
-                    phone : action.payload
-                } 
-            } 
+
+            case 'CHANGE_PERSONAL_DATA':
+                return { ...state,
+                    payer: { ...state.payer,
+                    firstName: action.payload.firstName,
+                    lastName: action.payload.lastName,
+                    country: action.payload.country,
+                    city: action.payload.city,
+                    phone: action.payload.phone,
+                    }
+                }
             
         case 'CHANGE_DELIVERY_METHOD':
             return { ...state,
@@ -79,13 +57,6 @@ const initialState = {
                 activeStep: action.payload,
             };    
 
-        case 'CHANGE_FIRST_STEP_AVAILABILITY': 
-            return { ...state,
-                    stepsAvailable: {
-                        ...state.stepsAvailable,
-                        1: action.payload,
-                    }
-                };
         case 'POST_DATA':
             return {
                 ...initialState,

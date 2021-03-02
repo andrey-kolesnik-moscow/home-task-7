@@ -8,7 +8,7 @@ import { changePaymentMethod } from '../Redux/actions';
 import Card from '../Components/Card';
 
 export default function PaymentMethods() {
-  const paymentMethod = useSelector(({ paymentMethod }) => paymentMethod);
+  const paymentMethod = useSelector((store) => store.payer.paymentMethod);
   const dispatch = useDispatch();
 
   const paymentProviders = [

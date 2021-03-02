@@ -24,23 +24,13 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
     padding: '8px 22px',
   },
-  backButton: {
-    marginRight: theme.spacing(1),
-  },
-  completed: {
-    display: 'inline-block',
-  },
   buttonsBox: {
     display: 'flex',
     marginTop: '20px',
   },
-  instructions: {
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
-  },
 }));
 
-function getStepTitle(step) {
+function getStepForm(step) {
   switch (step) {
     case 0:
       return <ContactInfo />;
@@ -95,7 +85,7 @@ export default function RadioBlock() {
       </Stepper>
       <div>
         <div>
-          {getStepTitle(activeStep)}
+          {getStepForm(activeStep)}
           <div className={classes.buttonsBox}>
             <Button
               variant="contained"
@@ -109,7 +99,9 @@ export default function RadioBlock() {
               disabled={!stepsAvailable[activeStep + 1]}
               color={activeStep !== 0 ? 'primary' : 'secondary'}
               onClick={handleNext}
-              style={{ width: '100%' }}
+              style={
+                activeStep !== 0 ? { display: 'inline-flex', width: '100%' } : { display: 'none' }
+              }
               className={classes.button}>
               {activeStep === 3 ? 'Оплатить' : 'Далее'}
             </Button>

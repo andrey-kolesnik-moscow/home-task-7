@@ -9,7 +9,7 @@ function SummaryInfo() {
       <h3>Контактная информация:</h3>
       <ul>
         <li>Имя: {payer.firstName.trim()}</li>
-        <li>Фамилия {payer.lastName.trim()}:</li>
+        <li>Фамилия: {payer.lastName.trim()}</li>
         <li>Страна: {payer.country.trim()}</li>
         <li>Город: {payer.city.trim()}</li>
         <li>Номер телефона: {payer.phone.trim()}</li>
