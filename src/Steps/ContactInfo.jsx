@@ -13,6 +13,8 @@ const useStyles = makeStyles((theme) => ({
   button: {
     marginRight: theme.spacing(1),
     padding: '8px 22px',
+    width: '100%',
+    margin: '10px',
   },
 }));
 
@@ -76,12 +78,7 @@ export default function ContactInfo() {
               error={errors[item.field]}
             />
           ))}
-          <Button
-            variant="contained"
-            color="secondary"
-            type="submit"
-            style={{ width: '100%', margin: '10px' }}
-            className={classes.button}>
+          <Button variant="contained" color="secondary" type="submit" className={classes.button}>
             Далее
           </Button>
         </Grid>
